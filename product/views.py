@@ -22,3 +22,14 @@ class ProductViewSet(ModelViewSet):
         if self.action in ('update', 'partial_update', 'destroy'):
             return [permissions.IsAuthenticated(), IsAuthor()]
         return [permissions.IsAuthenticatedOrReadOnly()]
+
+    # api/v1/product/id/
+    # @action(['DELETE'], detail=True)
+    # def review_delete(self, request, pk):
+    #     product = self.get_object()  # Product.object.get(id=pk)
+    #     user = request.user
+    #     if product.reviews.filter(owner=user).exists():
+    #         return response.Response('You didn\'t reviewed this product', status=400)
+    #     review = product.reviews.get(owner=user)
+    #     review.delete()
+    #     return response.Response('Successfully deleted', status=204)

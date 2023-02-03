@@ -8,6 +8,12 @@ def send_confirmation_email(user, code):
         f'Чтобы активировать ваш аккаунт нужно перейти по ссылке: \n{full_link} ',
         'baialinovsultan@gmail.com',
         [user],
-        fail_silently= False
+        fail_silently=False
     )
 
+
+def send_reset_email(user):
+    code = user.activation_code
+    email = user.email
+    send_mail('Letter with password reset code!', f"Your reset code {code}", 'from@eample.com',
+              [email, ], fail_silently=False)
