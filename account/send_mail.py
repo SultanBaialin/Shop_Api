@@ -12,8 +12,17 @@ def send_confirmation_email(user, code):
     )
 
 
-def send_reset_email(user):
-    code = user.activation_code
-    email = user.email
-    send_mail('Letter with password reset code!', f"Your reset code {code}", 'from@eample.com',
-              [email, ], fail_silently=False)
+# def send_reset_email(user):
+#     code = user.activation_code
+#     email = user.email
+#     send_mail('Letter with password reset code!', f"Your reset code {code}", 'from@eample.com',
+#               [email, ], fail_silently=False)
+
+def send_notification(user_email, order_id, price):
+    send_mail(
+        'uvedomlenie o sozdanii zakaza!',
+        f"""vi sozdaly zakaz №{order_id}, \n polnaya stoimost' vashego zakaza: {price}. \nsposibo za to chto vibraly nas!""",
+        'from@example.com',
+        [user_email],
+        fail_silently=False
+    )
