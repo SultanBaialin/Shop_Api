@@ -18,4 +18,3 @@ app.conf.beat_schedule = {
         'schedule': crontab()
     }
 }
-
